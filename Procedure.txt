@@ -1,0 +1,18 @@
+ssh poolhiwi@pool20.lsm.uni-wuppertal.de
+mkdir Vignesh
+cd Vignesh
+scp -r poolhiwi@pool15.lsm.uni-wuppertal.de:/home/poolhiwi/Vignesh/03_Cases/09_ParametricStudy_64processor/test/Togive . 
+scp -r poolhiwi@pool15.lsm.uni-wuppertal.de:/home/poolhiwi/Vignesh/02_Solver/globalMultiRegionThermoElectricTransientFoam .
+cd  globalMultiRegionThermoElectricTransientFoam
+wmake
+cd ../Togive
+export LC_NUMERIC="en_US.UTF-8"
+python3 module.py processor0.csv processor1.csv processor2.csv processor3.csv processor4.csv processor5.csv processor6.csv processor7.csv processor8.csv processor9.csv processor10.csv processor11.csv processor12.csv processor13.csv processor14.csv processor15.csv processor16.csv processor17.csv processor18.csv processor19.csv processor20.csv processor21.csv processor22.csv processor23.csv processor24.csv processor25.csv processor26.csv processor27.csv processor28.csv processor29.csv processor30.csv processor31.csv processor32.csv processor33.csv processor34.csv processor35.csv processor36.csv processor37.csv processor38.csv processor39.csv processor40.csv processor41.csv processor42.csv processor43.csv processor44.csv processor45.csv processor46.csv processor47.csv processor48.csv processor49.csv processor50.csv processor51.csv processor52.csv processor53.csv
+rm {0..53}.sh
+pip3 install --user mpi4py
+pip3 install --user matplotlib
+pip3 install --user pandas
+mv
+mpiexec -n 4 python3 -m mpi4py parallel.py
+
+scp -r poolhiwi@pool11.lsm.uni-wuppertal.de:/home/poolhiwi/Vignesh/Togive .
